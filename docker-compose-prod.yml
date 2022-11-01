@@ -9,7 +9,6 @@ services:
     volumes:
       - ./nodered:/data
   react-app:
-    image: chadrogers00/react-prod
     build: 
       context: ./react-app
       dockerfile: ./Dockerfile.prod
