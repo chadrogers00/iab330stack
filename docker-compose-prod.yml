@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  nodered:
+    image: nodered/node-red
+    container_name: iab330nodered
+    hostname: iab330nodered
+    ports: 
+      - "1880:1880"
+    volumes:
+      - ./nodered:/data
+  react-app:
+    image: chadrogers00/react-prod
+    build: 
+      context: ./react-app
+      dockerfile: ./Dockerfile.prod
+    container_name: iab330reactapp
+    hostname: iab330reactapp
+    ports: 
+      - "8080:80"
+    environment: 
+      - WATCHPACK_POLLING=true
