@@ -4,7 +4,7 @@ import TitleBar from "../components/TitleBar"
 const DashboardPage = () => {
   return(
     <div>
-      <TitleBar title="Dashboarddd"/>
+      <TitleBar title="Dashboard"/>
       <Dashboard/>
     </div>
   )
