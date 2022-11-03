@@ -1,12 +1,24 @@
 import { ArrowForwardIosSharp } from "@mui/icons-material";
 import { Button, createTheme, ThemeProvider } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { Colors } from "../utilities/GlobalStyles";
+import Status from "./Status";
 
 const RoomRow = ({room, occupancy, capacity, status, bookingEnd}) => {
+  const navigate = useNavigate();
+  let bookingStatus;
+
+  if (bookingEnd != '') {
+    bookingStatus = `Avaliable at ${bookingEnd}`
+  }
+  else {
+    bookingStatus = 'Avaliable'
+  }
+
   return (
     <div style={styles.mainContainer}>
       <ThemeProvider theme={theme}>
-        <Button sx={styles.button}>
+        <Button sx={styles.button} onClick={handleClick}>
           <div style={styles.insideContainer}>
             <div style={styles.sectionContainer}>
               <p style={styles.roomNumberLabel}>
@@ -16,15 +28,15 @@ const RoomRow = ({room, occupancy, capacity, status, bookingEnd}) => {
             <div style={styles.sectionContainer}>
               <div>
                 <p style={styles.statusLabel}>
-                  {occupancy}/{capacity}
+                  Capacity: {occupancy}/{capacity}
                 </p>
                 <p style={styles.addressLabel}>
-                  Avaliable at {bookingEnd}
+                  {bookingStatus}
                 </p>
               </div>
             </div>
             <div style={styles.sectionContainer}>
-              {status}
+              <Status status={status}/>
             </div>
             <div style={styles.sectionContainer}>
               <ArrowForwardIosSharp sx={styles.iconColor}/>
@@ -34,9 +46,15 @@ const RoomRow = ({room, occupancy, capacity, status, bookingEnd}) => {
       </ThemeProvider>
     </div>
   )
+
+  function handleClick () {
+    navigate(`/rooms/${room}`)
+  }
   }
 
 export default RoomRow
+
+
 
 
 
@@ -80,7 +98,7 @@ margin: {
   margin: '0.5rem'
 },
 iconColor: {
-  color: 'white',
+  color: Colors.fontdark,
   fontSize: 35
 },
 button: {

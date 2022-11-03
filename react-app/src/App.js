@@ -4,6 +4,7 @@ import RoomsPage from './pages/RoomsPage';
 import LogsPage from './pages/LogsPage';
 import SettingsPage from './pages/SettingsPage';
 import DashboardPage from './pages/DashboardPage';
+import RoomDetailsPage from './pages/RoomDetailsPage';
 
 
 export const App = () => {
@@ -15,6 +16,7 @@ export const App = () => {
             <Route path="/logs" element={<LogsPage />} />
             <Route path="/rooms" element={<RoomsPage />} />
             <Route path="/settings" element={<SettingsPage />} />
+            <Route path="/rooms/:id" element={<RoomDetailsPage/>}/>
           </Route>
         </Routes>
       </BrowserRouter>
