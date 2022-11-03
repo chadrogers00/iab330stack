@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  nodered:
+    image: nodered/node-red
+    container_name: iab330nodered
+    hostname: iab330nodered
+    ports: 
+      - "1880:1880"
+    volumes:
+      - ./nodered:/data
