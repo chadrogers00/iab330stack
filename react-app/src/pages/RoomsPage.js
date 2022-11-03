@@ -1,6 +1,5 @@
-import Room from "../components/Room"
+import RoomList from "../components/RoomList"
 import TitleBar from "../components/TitleBar"
-import Subheadings from "../components/Subheadings"
 import { container } from "../utilities/GlobalStyles"
 import { CssBaseline } from '@mui/material';
 
@@ -9,8 +8,7 @@ const RoomsPage = () => {
     <div>
       <CssBaseline />
       <TitleBar title="Rooms"/>
-      <Subheadings />
-      <Room />
+      <RoomList />
     </div>
   )
 }
