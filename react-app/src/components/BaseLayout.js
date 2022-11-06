@@ -5,7 +5,6 @@ import { Outlet } from 'react-router-dom';
 import SideMenu from './SideMenu';
 
 const BaseLayout = () => {
-  console.log(Colors.background)
   return(
     <div>
       <CssBaseline />
@@ -18,6 +17,9 @@ const BaseLayout = () => {
   )
 }
 
+export default BaseLayout
+
+//──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 const styles = {
   background: {
     minHeight: '100vh',
@@ -25,4 +27,3 @@ const styles = {
   }
 }
 
-export default BaseLayout

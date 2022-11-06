@@ -5,23 +5,14 @@ import { Colors } from "../utilities/GlobalStyles"
 const HospitalMap = () => {
 	const [isHover, setIsHover] = useState(false)
 	const [text, setText] = useState('Hospital Layout')
-
-	const handleMouseEnter = () => {
-		setIsHover(true)
-		setText('Coming Soon')
-	}
 	
-	const handleMouseLeave = () => {
-		setIsHover(false)
-		setText('Hospital Layout')
-	}
-
+	//───────────────────────────────────
 	const styles = {
 		hospitalDiv: {
 			backgroundColor: isHover ? Colors.tileBackgroundDark : Colors.tileBackground,
 			color: isHover ? Colors.fontColor : Colors.fontdark,
 			opacity: isHover? 0.5 : 1,
-			height: '40rem',
+			height: '30rem',
 			margin: '2rem 0',
 			borderRadius: '2rem',
 			display: 'grid',
@@ -41,6 +32,17 @@ const HospitalMap = () => {
 			<p style={{fontSize: 60, fontWeight: 700}}>{text}</p>
 		</div>
 	)
+	//───────────────────────────────────
+	function handleMouseEnter() {
+		setIsHover(true)
+		setText('Coming Soon')
+	}
+	
+	//───────────────────────────────────
+	function handleMouseLeave() {
+		setIsHover(false)
+		setText('Hospital Layout')
+	}
 }
 
 export default HospitalMap

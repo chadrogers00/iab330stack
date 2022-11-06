@@ -1,11 +1,15 @@
 import { Colors } from "../utilities/GlobalStyles";
 
+//■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 const Status = ({status}) => {
 	const styles = {
 		statusPanel: {
+			display: 'grid',
 			backgroundColor: '',
 			borderRadius: '1rem',
-			width: '8rem'
+			width: '8rem',
+			alignItems: 'center',
+			justifyContent: 'center'
 		},
 		statusLabel: {
 			color: Colors.fontWhite,
@@ -24,9 +28,7 @@ const Status = ({status}) => {
 	else if (status === 'empty') {
 		styles.statusPanel.backgroundColor = Colors.fontdark
 	}
-
 	
-
 	return(
 		<div style={styles.statusPanel}>
 			<p style={styles.statusLabel}>{status}</p>

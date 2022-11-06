@@ -4,16 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { Colors } from "../utilities/GlobalStyles";
 import Status from "./Status";
 
-const RoomRow = ({room, occupancy, capacity, status, bookingEnd}) => {
+//■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+const RoomRow = ({ room, occupancy, capacity, status }) => {
   const navigate = useNavigate();
-  let bookingStatus;
 
-  if (bookingEnd != '') {
-    bookingStatus = `Avaliable at ${bookingEnd}`
-  }
-  else {
-    bookingStatus = 'Avaliable'
-  }
 
   return (
     <div style={styles.mainContainer}>
@@ -27,19 +21,19 @@ const RoomRow = ({room, occupancy, capacity, status, bookingEnd}) => {
             </div>
             <div style={styles.sectionContainer}>
               <div>
-                <p style={styles.statusLabel}>
+                <p style={styles.occupancyLabel}>
                   Capacity: {occupancy}/{capacity}
                 </p>
                 <p style={styles.addressLabel}>
-                  {bookingStatus}
+
                 </p>
               </div>
             </div>
             <div style={styles.sectionContainer}>
-              <Status status={status}/>
+              <Status status={status} />
             </div>
             <div style={styles.sectionContainer}>
-              <ArrowForwardIosSharp sx={styles.iconColor}/>
+              <ArrowForwardIosSharp sx={styles.iconColor} />
             </div>
           </div>
         </Button>
@@ -47,72 +41,69 @@ const RoomRow = ({room, occupancy, capacity, status, bookingEnd}) => {
     </div>
   )
 
-  function handleClick () {
+  //───────────────────────────────────
+  function handleClick() {
     navigate(`/rooms/${room}`)
   }
-  }
+}
 
 export default RoomRow
 
-
-
-
-
 //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 const styles = {
-mainContainer: {
-  width: '100%',
-  height: 'auto',
-  backgroundColor: Colors.tileBackground,
-  borderRadius: '0.5rem',
-  margin: '1rem 0'
-},
-insideContainer: {
-  display: 'grid',
-  gridTemplateColumns: '4fr 5fr 3fr 1fr',
-},
-sectionContainer: {
-  display: 'grid',
-  justifyContent:'center',
-  alignItems: 'center',
-  margin: '0 2rem'
-},
-roomNumberLabel: {
-  color: Colors.fontdark,
-  fontSize: 35,
-  fontWeight: 700,
-},
-statusLabel: {
-  color: Colors.white,
-  fontSize: 30,
-  fontWeight: 400,
-  margin: 0,
-},
-addressLabel: {
-  color: Colors.grey,
-  fontSize: 23,
-  fontWeight: 400,
-  margin: 0,
-},
-margin: {
-  margin: '0.5rem'
-},
-iconColor: {
-  color: Colors.fontdark,
-  fontSize: 35
-},
-button: {
-  margin: 0,
-  padding: 0,
-  width: '100%',
-}
+  mainContainer: {
+    width: '100%',
+    height: 'auto',
+    backgroundColor: Colors.tileBackground,
+    borderRadius: '0.5rem',
+    margin: '1rem 0'
+  },
+  insideContainer: {
+    display: 'grid',
+    gridTemplateColumns: '4fr 5fr 3fr 1fr',
+  },
+  sectionContainer: {
+    display: 'grid',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: '0 2rem'
+  },
+  roomNumberLabel: {
+    color: Colors.fontdark,
+    fontSize: 35,
+    fontWeight: 700,
+  },
+  occupancyLabel: {
+    color: Colors.white,
+    fontSize: 30,
+    fontWeight: 400,
+    margin: 0,
+  },
+  addressLabel: {
+    color: Colors.grey,
+    fontSize: 23,
+    fontWeight: 400,
+    margin: 0,
+  },
+  margin: {
+    margin: '0.5rem'
+  },
+  iconColor: {
+    color: Colors.fontdark,
+    fontSize: 35
+  },
+  button: {
+    margin: 0,
+    padding: 0,
+    width: '100%',
+  }
 }
 
 //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 const theme = createTheme({
-typography: {
-  button: {
-    textTransform: 'none'
-  }
-},
+  typography: {
+    button: {
+      textTransform: 'none'
+    }
+  },
 });

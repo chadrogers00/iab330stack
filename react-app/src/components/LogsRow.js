@@ -1,16 +1,19 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Colors } from '../utilities/GlobalStyles';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
-import { Button, createTheme} from '@mui/material';
+import { Button, createTheme } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 
-const LogsRow = ({room, time, date, status}) => {
+const LogsRow = ({ room, time, date, sensor, val }) => {
+
   return (
     <div style={styles.mainContainer}>
       <ThemeProvider theme={theme}>
         <div style={styles.insideContainer}>
           <div style={styles.sectionContainer}>
             <p style={styles.roomLabel}>
-              {room}
+              #{room}
             </p>
           </div>
           <div style={styles.sectionContainer}>
@@ -25,13 +28,30 @@ const LogsRow = ({room, time, date, status}) => {
           </div>
           <div style={styles.sectionContainer}>
             <p style={styles.statusLabel}>
-              {status}
+              {messageHandler(sensor, val)}
             </p>
           </div>
         </div>
       </ThemeProvider>
     </div>
   )
+
+  function messageHandler(sensor, val) {
+    if (sensor === 'BLE') {
+      return `The BLE Sensor Detected Movement`
+    }
+    if (sensor === 'headcount') {
+      let array = val.split(',')
+      array = array.filter(num => num === '1')
+      return `The Headcount Sensor Detected ${array.length} Person`
+    }
+    if (sensor === 'doorstate' && val === '1') {
+      return `The Doorstate Sensor Detected The Door Opened`
+    }
+    else if (sensor === 'doorstate' && val === '0') {
+      return `The Doorstate Sensor Detected The Door Closed`
+    }
+  }
 }
 
 export default LogsRow
@@ -52,7 +72,7 @@ const styles = {
   },
   sectionContainer: {
     display: 'grid',
-    justifyContent:'center',
+    justifyContent: 'center',
     alignItems: 'center',
     margin: '0 2rem'
   },
@@ -83,7 +103,7 @@ const styles = {
     fontWeight: 400,
     margin: 0,
   },
-  
+
 }
 
 //──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────

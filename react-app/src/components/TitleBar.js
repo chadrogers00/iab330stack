@@ -1,5 +1,6 @@
 import { Colors } from "../utilities/GlobalStyles"
 
+//■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 const TitleBar = ({title}) => {
   return (
     <div style={styles.container}>
@@ -10,6 +11,7 @@ const TitleBar = ({title}) => {
 
 export default TitleBar
 
+//──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 const styles = {
   container: {
     display: 'flex',
